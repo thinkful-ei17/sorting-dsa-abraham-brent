@@ -17,27 +17,18 @@ while (array[j] > pivot) { j--; }
 while (i <= j)
 */
 function altPartition(array, start, end) {
-  const pivotIndex = Math.floor(array.length / 2);
-  const pivot = array[pivotIndex];
+  const pivot = array[Math.floor(array.length / 2)];
   let i = start;
   let j = end;
-
-  while (i < array[j] && j > array[i]) {
-    if (array[i] > pivot && array[j] < pivot) {
-      swap(arr, i, j);
+  while (i <= j){
+    while (array[i] < pivot) { 
+      i++; 
     }
-    i++;
-    j--; 
+    while (array[j] > pivot) { 
+      j--; 
+    }
+    swap(array, i, j);
   }
-  // // loop over left half to middle
-  // for (let i = 0; i < pivotIndex; i++){
-  //   if (array[i] <= pivot) {
-  //     swap(array,)
-  //   }
-  // }
-  // // loop over right half towards middle
-  // for(let j = array.length -1; j > pivotIndex; j--){
-  // }
 }
 
 function partition(array, start, end) {
