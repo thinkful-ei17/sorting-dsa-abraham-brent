@@ -18,6 +18,31 @@ function partition(array, start, end) {
   swap(array, end - 1, j);
   return j;
 }
+function altPartition(array, start, end) {
+  const pivotIndex = Math.floor(array.length / 2);
+  const pivot = array[pivotIndex];
+  console.log(pivot);
+  let i = start;
+  let j = end;
+  console.log('this is i and j', i, j);
+  while (i < array[j] && j > array[i]) {
+    if (array[i] > pivot && array[j] < pivot) {
+      swap(array, i, j);
+    }
+    i++;
+    j--;
+    console.log(array);
+  }
+  // // loop over left half to middle
+  // for (let i = 0; i < pivotIndex; i++){
+  //   if (array[i] <= pivot) {
+  //     swap(array,)
+  //   }
+  // }
+  // // loop over right half towards middle
+  // for(let j = array.length -1; j > pivotIndex; j--){
+  // }
+}
 
 function quickSort(array, start = 0, end = array.length) {
   start = start;
@@ -25,7 +50,7 @@ function quickSort(array, start = 0, end = array.length) {
   if (start >= end) {
     return array;
   }
-  const middle = partition(array, start, end);
+  const middle = altPartition(array, start, end);
   array = quickSort(array, start, middle);
   array = quickSort(array, middle + 1, end);
   return array;
